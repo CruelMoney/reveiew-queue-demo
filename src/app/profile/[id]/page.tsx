@@ -11,6 +11,7 @@ async function reportProfile(profileId: string) {
   await modApi.queueActions.execute({
     actionKey: "report_profile",
     contentIds: [profileId],
+    queueId: "677fc20db144ee2d6514d03a",
   });
 
   // This is the empty function that will be filled out later
