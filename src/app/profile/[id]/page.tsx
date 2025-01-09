@@ -12,15 +12,17 @@ async function reportProfile(profileId: string) {
 }
 
 interface ProfilePageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function ProfilePage({ params }: ProfilePageProps) {
+  const { id } = await params;
+
   const profile = await prisma.profile.findUnique({
     where: {
-      id: params.id,
+      id: id,
     },
   });
 
