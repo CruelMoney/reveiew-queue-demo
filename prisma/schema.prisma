@@ -1,0 +1,18 @@
+// This is your Prisma schema file
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Profile {
+  id            String   @id @default(cuid())
+  username      String   @unique
+  bio           String
+  imageUrl      String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+} 
