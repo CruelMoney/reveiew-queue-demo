@@ -2,6 +2,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/db";
 import Image from "next/image";
 
+// force dynamic
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
