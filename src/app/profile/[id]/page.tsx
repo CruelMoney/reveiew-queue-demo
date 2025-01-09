@@ -3,9 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ReportButton } from "./report-button";
+import modApi from "@/lib/modApi";
 
 async function reportProfile(profileId: string) {
   "use server";
+
+  await modApi.queueActions.execute({
+    actionKey: "report_profile",
+    contentIds: [profileId],
+  });
 
   // This is the empty function that will be filled out later
   console.log("Profile reported:", profileId);

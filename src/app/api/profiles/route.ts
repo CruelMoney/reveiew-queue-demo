@@ -22,8 +22,35 @@ export async function POST(request: Request) {
       },
     });
 
+    const analysis = await modApi.moderate.object({
+      contentId: profile.id,
+      authorId: profile.id,
+      value: {
+        type: "profile",
+        data: {
+          username: {
+            type: "text",
+            value: username,
+          },
+          bio: {
+            type: "text",
+            value: bio,
+          },
+          imageUrl: {
+            type: "image",
+            value: imageUrl,
+          },
+        },
+      },
+    });
+
+    if (analysis.flagged) {
+      //do something
+    }
+
     return NextResponse.json(profile);
   } catch (error) {
+    console.log(JSON.stringify(error, null, 2));
     console.error("Error creating profile:", error);
     return NextResponse.json(
       { error: "Error creating profile" },
