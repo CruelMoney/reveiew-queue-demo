@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
 import modApi from "@/lib/modApi";
 import { headers } from "next/headers";
+import { prisma } from "@/lib/db";
 
 export async function POST(request: Request) {
   try {
